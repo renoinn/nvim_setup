@@ -1,15 +1,11 @@
 vim.cmd[[packadd packer.nvim]]
 
 require'packer'.startup(function()
-  -- opt オプションを付けると遅延読み込みになります。
-  -- この場合は opt だけで読み込む契機を指定していないため、
-  -- `packadd` コマンドを叩かない限り読み込まれることはありません。
   use{'wbthomason/packer.nvim', opt = true}
-  -- packer.nvim 自体を遅延読み込みにする理由はまた後ほど。
 
-  -- 特定のファイルタイプのファイルを開いたら読み込む
   -- use{'fatih/vim-go', opt = true, ft = {'go'}}
-  
+
+  -- lsp plugins
   use{'neovim/nvim-lspconfig'}
   use{'williamboman/mason.nvim'}
   use{'williamboman/mason-lspconfig.nvim'}
@@ -22,7 +18,9 @@ require'packer'.startup(function()
 
   -- color scheme
   use 'navarasu/onedark.nvim'
+  use 'rebelot/kanagawa.nvim'
 
+  -- ui plugins
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -38,6 +36,12 @@ require'packer'.startup(function()
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
+    }
+  }
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    requires = {
+      'nvim-lua/plenary.nvim',
     }
   }
   --[[

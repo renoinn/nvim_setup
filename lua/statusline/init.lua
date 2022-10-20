@@ -1,4 +1,4 @@
---local colorscheme = require'lualine.themes.onedark'
+local colorscheme = require'lualine.themes.kanagawa'
 require('lualine').setup {
---  options = { theme  = 'onedark' },
+  options = { theme  = colorscheme },
 }

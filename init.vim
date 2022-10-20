@@ -21,6 +21,7 @@ inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
 inoremap ,df  <C-r>=strftime('%Y-%m-%d %H:%M:%S')<Return>
 
+nnoremap <c-w><c-t> :NeoTreeShow<cr>
 nnoremap j gj
 nnoremap k gk
 nnoremap <c-l> <c-w><c-l>
@@ -31,6 +32,14 @@ nnoremap <c-f> gt<cr>
 nnoremap <c-b> gT<cr>
 nnoremap <c-e> $
 nnoremap <c-a> 0
+
+lua <<EOF
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', 'ff', builtin.find_files, {})
+vim.keymap.set('n', 'fg', builtin.live_grep, {})
+vim.keymap.set('n', 'fb', builtin.buffers, {})
+vim.keymap.set('n', 'fh', builtin.help_tags, {})
+EOF
 
 lua <<EOF
 require 'plugins'
