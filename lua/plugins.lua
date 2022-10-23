@@ -9,7 +9,12 @@ require'packer'.startup(function()
   use{'neovim/nvim-lspconfig'}
   use{'williamboman/mason.nvim'}
   use{'williamboman/mason-lspconfig.nvim'}
-  use 'folke/lsp-colors.nvim'
+  use{
+      'folke/lsp-colors.nvim',
+      config = function ()
+          require('folke/lsp-colors.nvim').setup({})
+      end
+  }
 
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
@@ -48,10 +53,7 @@ require'packer'.startup(function()
     }
   }
   use 'RRethy/vim-illuminate'
-  use {
-    "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
-  }
+  use 'theHamsta/nvim-treesitter-pairs'
   use {
     "folke/which-key.nvim",
     config = function()
@@ -72,6 +74,8 @@ require'packer'.startup(function()
 
 end)
 
+require('nvim-treesitter.configs').setup {}
+
 -- mason settings
 require('mason').setup()
 require('mason-lspconfig').setup()
@@ -89,6 +93,9 @@ require("neo-tree").setup({
   enable_git_status = true,
   enable_diagnostics = true,
   sort_case_insensitive = false,
+  window = {
+    width = 30
+  },
   filesystem = {
     filtered_items = {
       hide_dotfiles = false,

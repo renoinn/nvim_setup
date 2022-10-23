@@ -22,6 +22,7 @@ set fileformats=unix
 inoremap ,df  <C-r>=strftime('%Y-%m-%d %H:%M:%S')<Return>
 
 nnoremap <c-w><c-t> :NeoTreeShow<cr>
+nnoremap <c-w><c-g> :NeoTreeFloatToggle git_status<cr>
 nnoremap j gj
 nnoremap k gk
 nnoremap <c-l> <c-w><c-l>
