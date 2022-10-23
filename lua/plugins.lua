@@ -9,12 +9,6 @@ require'packer'.startup(function()
   use{'neovim/nvim-lspconfig'}
   use{'williamboman/mason.nvim'}
   use{'williamboman/mason-lspconfig.nvim'}
-  use{
-      'folke/lsp-colors.nvim',
-      config = function ()
-          require('folke/lsp-colors.nvim').setup({})
-      end
-  }
 
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
@@ -53,7 +47,14 @@ require'packer'.startup(function()
     }
   }
   use 'RRethy/vim-illuminate'
-  use 'theHamsta/nvim-treesitter-pairs'
+  use {
+	"windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup {
+        disable_filetype = { "TelescopePrompt", },
+      }
+    end
+  }
   use {
     "folke/which-key.nvim",
     config = function()
@@ -73,8 +74,6 @@ require'packer'.startup(function()
   use 'sidebar-nvim/sidebar.nvim'
 
 end)
-
-require('nvim-treesitter.configs').setup {}
 
 -- mason settings
 require('mason').setup()
@@ -100,7 +99,16 @@ require("neo-tree").setup({
     filtered_items = {
       hide_dotfiles = false,
     }
-  }
+  },
+  sources = {
+    "filesystem",
+    "buffers",
+    "git_status",
+  },
+  sourse_selector = {
+    winbar = true,
+    statusline = true,
+  },
 })
 
 -- vim-illuminate 
