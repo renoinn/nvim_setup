@@ -9,6 +9,26 @@ require'packer'.startup(function()
   use{'neovim/nvim-lspconfig'}
   use{'williamboman/mason.nvim'}
   use{'williamboman/mason-lspconfig.nvim'}
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+  }
+  use{
+    'kkharji/lspsaga.nvim',
+    config = function ()
+      require('lspsaga').setup({})
+    end
+  }
+  use {
+    "folke/trouble.nvim",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
 
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
@@ -28,11 +48,7 @@ require'packer'.startup(function()
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
   use {
-    'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-  }
-  use {
-  "nvim-neo-tree/neo-tree.nvim",
+    "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
     requires = {
       "nvim-lua/plenary.nvim",
@@ -41,11 +57,14 @@ require'packer'.startup(function()
     }
   }
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.0',
     requires = {
       'nvim-lua/plenary.nvim',
     }
   }
+
+  -- utility plugins
   use 'RRethy/vim-illuminate'
   use {
 	"windwp/nvim-autopairs",
@@ -57,6 +76,7 @@ require'packer'.startup(function()
   }
   use {
     "folke/which-key.nvim",
+    opt = true,
     config = function()
       require("which-key").setup {
         -- your configuration comes here
