@@ -36,16 +36,16 @@ nnoremap <c-b> gT<cr>
 nnoremap <c-e> $
 nnoremap <c-a> 0
 
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
-nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
-nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
-nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
-nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
-nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
 
 lua <<EOF
---local opts = { noremap=true, silent=true }
+vim.keymap.set('n', '<space>xx', '<cmd>TroubleToggle<cr>')
+vim.keymap.set('n', '<space>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>')
+vim.keymap.set('n', '<space>xd', '<cmd>TroubleToggle document_diagnostics<cr>')
+vim.keymap.set('n', '<space>xq', '<cmd>TroubleToggle quickfix<cr>')
+vim.keymap.set('n', '<space>xl', '<cmd>TroubleToggle loclist<cr>')
+vim.keymap.set('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>')
+
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<space>da', '<cmd>Lspsaga code_action<cr>')
 vim.keymap.set('n', '<space>dr', '<cmd>Lspsaga rename<cr>')
@@ -53,11 +53,6 @@ vim.keymap.set('n', '<space>ds', '<cmd>Lspsaga show_line_diagnostics<cr>')
 vim.keymap.set('n', 'K', '<cmd>Lspsaga show_line_diagnostics<cr>')
 
 local map = vim.api.nvim_buf_set_keymap
---map(0, "x", "gx", ":<c-u>Lspsaga range_code_action<cr>", {silent = true, noremap = true})
---map(0, "n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", {silent = true, noremap = true})
---map(0, "n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", {silent = true, noremap = true})
---map(0, "n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1, '<c-u>')<cr>", {})
---map(0, "n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1, '<c-d>')<cr>", {})
 EOF
 
 lua <<EOF
@@ -71,7 +66,6 @@ EOF
 lua <<EOF
 require 'plugins'
 require 'theme'
-require 'statusline'
 require 'cmp_settings'
 EOF
 
