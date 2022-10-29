@@ -9,9 +9,11 @@ require'packer'.startup(function()
   use{'neovim/nvim-lspconfig'}
   use{
     'williamboman/mason.nvim',
-    config = conf 'mason'
   }
-  use{'williamboman/mason-lspconfig.nvim'}
+  use{
+    'williamboman/mason-lspconfig.nvim',
+    conf = conf 'mason-lspconfig'
+  }
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
@@ -21,8 +23,14 @@ require'packer'.startup(function()
     config = conf 'lspsaga'
   }
   use {
-    "folke/trouble.nvim",
+    'folke/trouble.nvim',
     config = conf 'trouble'
+  }
+  use {
+    'j-hui/fidget.nvim',
+    config = function()
+      require('fidget').setup({})
+    end
   }
 
   -- completion
