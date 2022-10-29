@@ -21,51 +21,10 @@ set fileformats=unix
 
 let mapleader = "\<Space>"
 
-inoremap ,df  <C-r>=strftime('%Y-%m-%d %H:%M:%S')<Return>
-
-nnoremap <c-w><c-t> :NeoTreeShow<cr>
-nnoremap <c-w><c-g> :NeoTreeFloatToggle git_status<cr>
-nnoremap j gj
-nnoremap k gk
-nnoremap <c-l> <c-w><c-l>
-nnoremap <c-k> <c-w><c-k>
-nnoremap <c-j> <c-w><c-j>
-nnoremap <c-h> <c-w><c-h>
-nnoremap <c-f> gt<cr>
-nnoremap <c-b> gT<cr>
-nnoremap <c-e> $
-nnoremap <c-a> 0
-
-
-
-lua <<EOF
-vim.keymap.set('n', '<space>xx', '<cmd>TroubleToggle<cr>')
-vim.keymap.set('n', '<space>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>')
-vim.keymap.set('n', '<space>xd', '<cmd>TroubleToggle document_diagnostics<cr>')
-vim.keymap.set('n', '<space>xq', '<cmd>TroubleToggle quickfix<cr>')
-vim.keymap.set('n', '<space>xl', '<cmd>TroubleToggle loclist<cr>')
-vim.keymap.set('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>')
-
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '<space>da', '<cmd>Lspsaga code_action<cr>')
-vim.keymap.set('n', '<space>dr', '<cmd>Lspsaga rename<cr>')
-vim.keymap.set('n', '<space>ds', '<cmd>Lspsaga show_line_diagnostics<cr>')
-vim.keymap.set('n', 'K', '<cmd>Lspsaga show_line_diagnostics<cr>')
-
-local map = vim.api.nvim_buf_set_keymap
-EOF
-
-lua <<EOF
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', 'ff', builtin.find_files, {})
-vim.keymap.set('n', 'fg', builtin.live_grep, {})
-vim.keymap.set('n', 'fb', builtin.buffers, {})
-vim.keymap.set('n', 'fh', builtin.help_tags, {})
-EOF
-
 lua <<EOF
 require 'plugins'
 require 'theme'
 require 'cmp_settings'
+require 'keymapping'
 EOF
 
