@@ -1,9 +1,3 @@
---[[
-require('onedark').setup {
-    style = 'darker'
-}
-require('onedark').load()
-]]--
 require('kanagawa').setup({
     undercurl = true,           -- enable undercurls
     commentStyle = { italic = true },

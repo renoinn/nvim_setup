@@ -6,6 +6,7 @@ local servers = {
   'sumneko_lua',
   'yamlls',
 }
+
 require('mason').setup({
   ui = {
     icons = {
@@ -15,20 +16,10 @@ require('mason').setup({
     }
   }
 })
+
 require('mason-lspconfig').setup({
   ensure_installed = servers,
 })
-
--- local lspconfig = require('lspconfig')
--- for _, lsp in ipairs(servers) do
---   lspconfig[lsp].setup {
---     flags = {
---       debounce_text_changes = 150,
---     },
---     capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
---     on_attach = require('keymapping').on_attach,
---   }
--- end
 
 require('mason-lspconfig').setup_handlers {
   function (server_name)

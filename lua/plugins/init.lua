@@ -79,14 +79,4 @@ require 'packer'.startup(function()
         'windwp/nvim-autopairs',
         config = conf 'nvim-autopairs'
     }
-    --[[
-  use {
-    'nvim-tree/nvim-tree.lua',
-    tag = 'nightly'
-  }
-  ]] --
-    use {
-        'sidebar-nvim/sidebar.nvim',
-        config = conf 'sidebar'
-    }
 end)
