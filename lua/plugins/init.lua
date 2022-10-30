@@ -43,7 +43,7 @@ require'packer'.startup(function()
   use 'hrsh7th/vim-vsnip'
 
   -- color scheme
-  use 'navarasu/onedark.nvim'
+  -- use 'navarasu/onedark.nvim'
   use 'rebelot/kanagawa.nvim'
 
   -- ui plugins

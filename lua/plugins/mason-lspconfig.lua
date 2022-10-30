@@ -1,3 +1,11 @@
+local servers = {
+  'tsserver',
+  'eslint',
+  'gopls',
+  'jsonls',
+  'sumneko_lua',
+  'yamlls',
+}
 require('mason').setup({
   ui = {
     icons = {
@@ -8,29 +16,25 @@ require('mason').setup({
   }
 })
 require('mason-lspconfig').setup({
-  ensure_installed = {
-    'tsserver',
-    'eslint',
-    'gopls',
-    'jsonls',
-    'sumneko_lua',
-    'yamlls',
-  },
+  ensure_installed = servers,
 })
 
-require("lspconfig").tsserver.setup {}
-require("lspconfig").eslint.setup {}
-require("lspconfig").gopls.setup {}
-require("lspconfig").jsonls.setup {}
-require("lspconfig").sumneko_lua.setup {}
-require("lspconfig").yamlls.setup {}
+-- local lspconfig = require('lspconfig')
+-- for _, lsp in ipairs(servers) do
+--   lspconfig[lsp].setup {
+--     flags = {
+--       debounce_text_changes = 150,
+--     },
+--     capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+--     on_attach = require('keymapping').on_attach,
+--   }
+-- end
 
---local on_attach_lsp = require('keymapping').on_attach,
 require('mason-lspconfig').setup_handlers {
   function (server_name) -- default handler (optional)
     require('lspconfig')[server_name].setup {
       capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-      on_attach = require('keymapping').on_attach,
+      on_attach = on_attach,
     }
   end,
 }

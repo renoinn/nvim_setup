@@ -37,13 +37,13 @@ map.set('n', 'fg', builtin.live_grep, {})
 map.set('n', 'fb', builtin.buffers, {})
 map.set('n', 'fh', builtin.help_tags, {})
 
-local M = {}
+-- local M = {}
 
-function M.on_attach (client, bufnr)
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
-end
+-- function M.on_attach (client, bufnr)
+--   local opts = { noremap=true, silent=true }
+--   vim.api.nvim_buf_set_keymap('0', 'n', 'gd', '<cmd>vim.lsp.buf.definition<cr>', opts)
+--   vim.api.nvim_buf_set_keymap('0', 'n', 'gi', vim.lsp.buf.implementation, opts)
+--   vim.api.nvim_buf_set_keymap('0', 'n', '<space>f', vim.lsp.buf.formatting, opts)
+-- end
 
-return M
+-- return M
