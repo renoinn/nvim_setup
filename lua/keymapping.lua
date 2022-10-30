@@ -2,7 +2,8 @@ local map = vim.keymap
 
 map.set('i', ',df', "<C-r>=strftime('%Y-%m-%d %H:%M:%S')<Return>")
 
-map.set('n', '<c-w><c-t>', '<cmd>NeoTreeShow<cr>')
+map.set('n', '<c-w><c-t>', '<cmd>NeoTreeFocusToggle<cr>')
+map.set('n', '<c-w><c-b>', '<cmd>NeoTreeFloatToggle buffers<cr>')
 map.set('n', '<c-w><c-g>', '<cmd>NeoTreeFloatToggle git_status<cr>')
 map.set('n', 'j', 'gj')
 map.set('n', 'k', 'gk')
@@ -37,13 +38,14 @@ map.set('n', 'fg', builtin.live_grep, {})
 map.set('n', 'fb', builtin.buffers, {})
 map.set('n', 'fh', builtin.help_tags, {})
 
--- local M = {}
+local M = {}
 
--- function M.on_attach (client, bufnr)
---   local opts = { noremap=true, silent=true }
---   vim.api.nvim_buf_set_keymap('0', 'n', 'gd', '<cmd>vim.lsp.buf.definition<cr>', opts)
---   vim.api.nvim_buf_set_keymap('0', 'n', 'gi', vim.lsp.buf.implementation, opts)
---   vim.api.nvim_buf_set_keymap('0', 'n', '<space>f', vim.lsp.buf.formatting, opts)
--- end
+-- attach keymap for lsp loaded
+function M.on_attach(client, bufnr)
+    local opts = { noremap = true, silent = true }
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
+end
 
--- return M
+return M

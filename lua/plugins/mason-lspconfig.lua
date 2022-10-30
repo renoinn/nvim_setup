@@ -31,10 +31,10 @@ require('mason-lspconfig').setup({
 -- end
 
 require('mason-lspconfig').setup_handlers {
-  function (server_name) -- default handler (optional)
+  function (server_name)
     require('lspconfig')[server_name].setup {
       capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-      on_attach = on_attach,
+      on_attach = require('keymapping').on_attach,
     }
   end,
 }
