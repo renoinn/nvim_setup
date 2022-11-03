@@ -20,7 +20,7 @@ map.set('n', '<c-a>', '0')
 -- buffer
 map.set('n', '<c-f>', '<cmd>bnext<cr>')
 map.set('n', '<c-b>', '<cmd>bprevious<cr>')
-map.set('n', '<c-w><c-d>', '<cmd>bd %<cr><cmd>bd#<cr>')
+map.set('n', '<c-w><c-d>', '<cmd>bd %<cr><cmd>bnext<cr>')
 
 map.set('n', '<space>xx', '<cmd>TroubleToggle<cr>')
 map.set('n', '<space>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>')
