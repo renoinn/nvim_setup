@@ -11,11 +11,16 @@ map.set('n', '<c-l>', '<c-w><c-l>')
 map.set('n', '<c-k>', '<c-w><c-k>')
 map.set('n', '<c-j>', '<c-w><c-j>')
 map.set('n', '<c-h>', '<c-w><c-h>')
-map.set('n', '<c-f>', 'gt<cr>')
-map.set('n', '<c-b>', 'gT<cr>')
+--map.set('n', '<c-f>', 'gt<cr>')
+--map.set('n', '<c-b>', 'gT<cr>')
 map.set('n', '<c-m>', '<c-v>') -- for windows
 map.set('n', '<c-e>', '$')
 map.set('n', '<c-a>', '0')
+
+-- buffer
+map.set('n', '<c-f>', '<cmd>bnext<cr>')
+map.set('n', '<c-b>', '<cmd>bprevious<cr>')
+map.set('n', '<c-w><c-d>', '<cmd>bd %<cr><cmd>bd#<cr>')
 
 map.set('n', '<space>xx', '<cmd>TroubleToggle<cr>')
 map.set('n', '<space>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>')

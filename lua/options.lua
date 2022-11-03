@@ -8,6 +8,7 @@ o.showmatch  = true
 o.ignorecase = true
 o.wrapscan = true
 o.termguicolors = true
+o.hidden = true
 
 -- tabspace
 o.expandtab = true

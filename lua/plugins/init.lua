@@ -3,7 +3,7 @@ local conf = require('_set_config').conf
 vim.cmd [[packadd packer.nvim]]
 
 require 'packer'.startup(function()
-    use { 'wbthomason/packer.nvim', opt = true }
+    use { 'wbthomason/packer.nvim' }
 
     -- lsp
     use { 'neovim/nvim-lspconfig' }
@@ -28,9 +28,11 @@ require 'packer'.startup(function()
     }
     use {
         'j-hui/fidget.nvim',
-        config = function()
-            require('fidget').setup({})
-        end
+        config = conf 'fidget'
+    }
+    use {
+        'simrat39/symbols-outline.nvim',
+        config = conf 'symbols-outline'
     }
 
     -- completion
@@ -58,7 +60,7 @@ require 'packer'.startup(function()
         config = conf 'neo-tree',
         requires = {
             "nvim-lua/plenary.nvim",
-            "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+            { 'kyazdani42/nvim-web-devicons', opt = true },
             "MunifTanjim/nui.nvim",
         }
     }
@@ -68,6 +70,12 @@ require 'packer'.startup(function()
         requires = {
             'nvim-lua/plenary.nvim',
         }
+    }
+    use {
+        'akinsho/bufferline.nvim',
+        tag = 'v3.1.0',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        config = conf 'bufferline',
     }
 
     -- utility plugins
